@@ -9,7 +9,7 @@ const MovieList = ({ movies, onMovieClick }) => {
                 <div className="details-wrapper">
                     <div className="movie-details-hedaer">{movie.title}</div>
                     {movie.contributor && (
-                        <div className="contributor">Contributed by: {movie.contributor}</div>
+                        <div className="contributor">Directed by: {movie.contributor}</div>
                     )}
                 </div>
             </div>

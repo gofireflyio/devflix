@@ -43,7 +43,7 @@ const MovieDetails = ({ movie, onClose }) => {
           <p>{renderDescription(movie.description)}</p>
           {movie.contributor && (
             <p className="contributor">
-              Contributed by: <a href={`https://github.com/${movie.contributor}`} target="_blank" rel="noopener noreferrer">{movie.contributor}</a>
+              Directed by: <a href={`https://github.com/${movie.contributor}`} target="_blank" rel="noopener noreferrer">{movie.contributor}</a>
             </p>
           )}
         </div>
