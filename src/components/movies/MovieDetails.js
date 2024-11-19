@@ -1,5 +1,5 @@
 import React from 'react';
-import { AiOutlineDownload } from 'react-icons/ai'; // Importing the download icon
+import { AiOutlineDownload } from 'react-icons/ai';
 
 const MovieDetails = ({ movie, onClose }) => {
   const renderDescription = (description) => {
@@ -20,7 +20,7 @@ const MovieDetails = ({ movie, onClose }) => {
   const handleDownloadClick = () => {
     const link = document.createElement('a');
     link.href = movie.poster;
-    link.download = `${movie.title}-poster.jpg`; // Adjust extension if necessary
+    link.download = `${movie.title}-poster.jpg`;
     link.click();
   };
 
@@ -33,7 +33,6 @@ const MovieDetails = ({ movie, onClose }) => {
           {movie.videoUrl && (
             <img src={`${process.env.PUBLIC_URL}/play-button-white.png`} alt="Play" className="play-icon" onClick={handlePlayClick} />
           )}
-          {/* Download Icon with Tooltip */}
           <div className="download-container" onClick={handleDownloadClick}>
             <AiOutlineDownload className="download-icon" title="Download poster" />
             <span className="tooltip">Download poster</span>
