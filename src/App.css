@@ -1,0 +1,264 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.app {
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.content {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo-container {
+    flex: 1;
+}
+
+.devflix-logo {
+    max-width: 200px;
+    height: auto;
+}
+
+.github-info {
+    display: flex;
+    align-items: center;
+}
+
+.github-info iframe {
+    margin-left: 10px;
+}
+
+.movie-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    height: calc(100vh - 155px);
+    overflow: scroll;
+}
+
+.movie-item {
+    cursor: pointer;
+    transition: transform 0.4s;
+    text-align: center;
+    background-color: rgba(24, 24, 24, 0.8);
+    padding: 10px;
+    border-radius: 8px;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-item:hover {
+    transform: scale(1.05);
+}
+
+.movie-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.movie-details {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 195px);
+    overflow: scroll;
+    position: relative;
+}
+
+.movie-details .close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.close-button:hover {
+    color: #dad5d5;
+}
+
+
+.movie-details .movie-content {
+    display: flex;
+    gap: 30px;
+}
+
+.movie-details .poster-container {
+    flex: 0 0 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.movie-details .poster {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.movie-details .play-button {
+    background-color: rgba(188, 237, 246, 0.8);
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: 100%;
+    max-width: 150px;
+}
+
+.movie-details .play-button:hover {
+    background-color: rgba(188, 237, 246, 1);
+}
+
+.movie-details .play-icon {
+    width: 90px;
+    margin-right: 5px;
+    position: absolute;
+    top: 102px;
+}
+
+.movie-details .info {
+    flex: 1;
+}
+
+.movie-details .info a {
+    color: #BCEDF6;
+    text-decoration: none;
+    border-bottom: 1px solid #BCEDF6;
+}
+
+.movie-details .info a:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+.movie-details h2 {
+    color: #FFFFFF;
+    margin-top: 0;
+}
+
+.movie-details p {
+    color: #fff;
+    line-height: 1.6;
+}
+
+.movie-details .thumbnails {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.movie-details .thumbnail-wrapper {
+    flex: 1;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.movie-details .thumbnail-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movie-item .contributor {
+    font-size: 0.8rem;
+    color: #BCEDF0;
+    margin-top: 5px;
+}
+
+.movie-details .contributor {
+    font-style: italic;
+    color: #BCEDF0;
+    margin-top: 10px;
+}
+
+.movie-details .contributor a {
+    color: #BCEDF0;
+    text-decoration: none;
+}
+
+.movie-details .contributor a:hover {
+    text-decoration: underline;
+}
+
+.details-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.movie-details-hedaer {
+    color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+  .movie-details .movie-content {
+    flex-direction: column;
+  }
+  
+  .movie-details .poster-container {
+    margin-bottom: 20px;
+  }
+
+  .movie-details .thumbnails {
+    flex-direction: column;
+  }
+
+  .movie-details .thumbnail-wrapper {
+    aspect-ratio: 16 / 9;
+  }
+  
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .github-info {
+    margin-top: 10px;
+  }
+
+}

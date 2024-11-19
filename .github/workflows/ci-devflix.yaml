@@ -1,0 +1,48 @@
+name: CI Prod DevFlix
+run-name: CI Prod DevFlix
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    # environment: "prod"
+    name: "Build & Deploy"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - name: "Setup Node"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "23" 
+      - name: Npm Build 
+        run: |
+          npm install
+          NODE_OPTIONS="--max-old-space-size=8192" npm run build
+      - name: Upload to S3 Bucket
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete --exclude='files/*'
+        env:
+          SOURCE_DIR: 'build'
+          AWS_S3_BUCKET: ${{ secrets.CI_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.CI_AWS_CRED_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CI_AWS_CRED_SECRET }}
+          AWS_REGION: ${{ secrets.CI_REGION }}
+      - name: Invalidate Cloudfront
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          PATHS: '/*'
+          AWS_ACCESS_KEY_ID: ${{ secrets.CI_AWS_CRED_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CI_AWS_CRED_SECRET }}
+          AWS_REGION: ${{ secrets.CI_REGION }}
+          DISTRIBUTION: ${{ secrets.CI_CLOUDFRONT_DISTRIBUTION_ID }}
+      # - name: Slack Notification
+      #   if: ${{ success() }}
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_COLOR: ${{ job.status }} # or a specific color like 'green' or '#ff00ff'
+      #     SLACK_ICON: https://assets-global.website-files.com/5d514fd9493b0575f03520bd/5d8e0b39fd776a3c238e8753_icons8_infinity_large_filled_2.svg
+      #     SLACK_MESSAGE: "Frontend (${{ inputs.environment }}) env successfully deployed from ${{ github.ref }}"
+      #     SLACK_TITLE: "Frontend (${{ inputs.environment }}) deployment notification"
+      #     SLACK_USERNAME: cicdBot
+      #     SLACK_WEBHOOK: ${{ secrets.CI_SLACK_WEBHOOK }}
+      #
