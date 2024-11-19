@@ -13,3 +13,5 @@ registry.terraform.io
 .env.dev
 dist/
 gitleaks.toml
+node_modules/
+build/
