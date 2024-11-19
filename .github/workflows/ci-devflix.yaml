@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    # environment: "prod"
+    environment: "prod"
     name: "Build & Deploy"
     runs-on: ubuntu-latest
     steps:
