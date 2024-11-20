@@ -21,7 +21,7 @@ const GitHubButton = () => {
     <div 
       dangerouslySetInnerHTML={{
         __html: `
-          <a class="github-button" href="https://github.com/infralight/devflix" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star infralight/devflix on GitHub">Star</a>
+          <a class="github-button" href="https://github.com/gofireflyio/devflix" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star gofireflyio/devflix on GitHub">Star</a>
         `
       }}
     />
