@@ -1,0 +1,20 @@
+name: FIREFLY-CACHE-MANAGER
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        type: string
+        description: 'Branch name.'
+        default: main
+        required: true
+  schedule:
+    - cron: "36 4 * * *"
+
+jobs:
+  call-build-cache:
+    uses: infralight/.github/.github/workflows/golang-cache-manager.yaml@10xx
+    with:
+      branch: ${{ inputs.branch || 'main' }}
+    secrets:
+      GLOBAL_PAT: ${{ secrets.GLOBAL_PAT }}
